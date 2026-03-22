@@ -1,16 +1,13 @@
-const SHOPIFY_STORE_URL = () => process.env.SHOPIFY_STORE_URL;
-const SHOPIFY_ACCESS_TOKEN = () => process.env.SHOPIFY_ACCESS_TOKEN;
-
-function apiUrl(path) {
-  return `https://${SHOPIFY_STORE_URL()}/admin/api/2024-10/${path}`;
+function apiUrl(storeUrl, path) {
+  return `https://${storeUrl}/admin/api/2024-10/${path}`;
 }
 
-async function shopifyFetch(path, options = {}) {
-  const res = await fetch(apiUrl(path), {
+async function shopifyFetch(storeUrl, accessToken, path, options = {}) {
+  const res = await fetch(apiUrl(storeUrl, path), {
     ...options,
     headers: {
       "Content-Type": "application/json",
-      "X-Shopify-Access-Token": SHOPIFY_ACCESS_TOKEN(),
+      "X-Shopify-Access-Token": accessToken,
       ...options.headers,
     },
   });
@@ -21,14 +18,14 @@ async function shopifyFetch(path, options = {}) {
   return data;
 }
 
-async function shopifyGraphQL(query, variables = {}) {
+async function shopifyGraphQL(storeUrl, accessToken, query, variables = {}) {
   const res = await fetch(
-    `https://${SHOPIFY_STORE_URL()}/admin/api/2024-10/graphql.json`,
+    `https://${storeUrl}/admin/api/2024-10/graphql.json`,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Shopify-Access-Token": SHOPIFY_ACCESS_TOKEN(),
+        "X-Shopify-Access-Token": accessToken,
       },
       body: JSON.stringify({ query, variables }),
     }
@@ -40,7 +37,7 @@ async function shopifyGraphQL(query, variables = {}) {
   return data;
 }
 
-export async function createProduct(productData, copyData) {
+export async function createProduct(storeUrl, accessToken, productData, copyData) {
   const product = {
     product: {
       title: productData.short_title || productData.title,
@@ -62,7 +59,7 @@ export async function createProduct(productData, copyData) {
     },
   };
 
-  const result = await shopifyFetch("products.json", {
+  const result = await shopifyFetch(storeUrl, accessToken, "products.json", {
     method: "POST",
     body: JSON.stringify(product),
   });
@@ -70,16 +67,15 @@ export async function createProduct(productData, copyData) {
   return result.product;
 }
 
-export async function createProductTemplate(templateName, templateJson) {
-  // Use the Asset API to create the template JSON in the active theme
-  const themes = await shopifyFetch("themes.json");
+export async function createProductTemplate(storeUrl, accessToken, templateName, templateJson) {
+  const themes = await shopifyFetch(storeUrl, accessToken, "themes.json");
   const activeTheme = themes.themes.find((t) => t.role === "main");
   if (!activeTheme) {
     throw new Error("No active theme found");
   }
 
   const assetKey = `templates/product.${templateName}.json`;
-  const result = await shopifyFetch(`themes/${activeTheme.id}/assets.json`, {
+  const result = await shopifyFetch(storeUrl, accessToken, `themes/${activeTheme.id}/assets.json`, {
     method: "PUT",
     body: JSON.stringify({
       asset: {
@@ -92,8 +88,7 @@ export async function createProductTemplate(templateName, templateJson) {
   return { themeId: activeTheme.id, assetKey, result };
 }
 
-export async function assignTemplateToProduct(productId, templateSuffix) {
-  // Use GraphQL to update the template suffix
+export async function assignTemplateToProduct(storeUrl, accessToken, productId, templateSuffix) {
   const gid = `gid://shopify/Product/${productId}`;
   const query = `
     mutation productUpdate($input: ProductInput!) {
@@ -109,7 +104,7 @@ export async function assignTemplateToProduct(productId, templateSuffix) {
       }
     }
   `;
-  const result = await shopifyGraphQL(query, {
+  const result = await shopifyGraphQL(storeUrl, accessToken, query, {
     input: { id: gid, templateSuffix },
   });
 
@@ -122,23 +117,23 @@ export async function assignTemplateToProduct(productId, templateSuffix) {
   return result.data.productUpdate.product;
 }
 
-export async function fullImport(productData, copyData, templateName, templateJson) {
-  console.log("Creating product on Shopify...");
-  const product = await createProduct(productData, copyData);
+export async function fullImport(storeUrl, accessToken, productData, copyData, templateName, templateJson) {
+  console.log(`Creating product on ${storeUrl}...`);
+  const product = await createProduct(storeUrl, accessToken, productData, copyData);
   console.log(`Product created: ${product.id} - ${product.title}`);
 
   console.log("Uploading landing page template...");
-  const templateResult = await createProductTemplate(templateName, templateJson);
+  const templateResult = await createProductTemplate(storeUrl, accessToken, templateName, templateJson);
   console.log(`Template uploaded: ${templateResult.assetKey}`);
 
   console.log("Assigning template to product...");
-  const assigned = await assignTemplateToProduct(product.id, templateName);
+  const assigned = await assignTemplateToProduct(storeUrl, accessToken, product.id, templateName);
   console.log(`Template assigned: ${assigned.templateSuffix}`);
 
   return {
     product,
     templateAsset: templateResult.assetKey,
-    productUrl: `https://${SHOPIFY_STORE_URL()}/products/${product.handle}`,
-    adminUrl: `https://${SHOPIFY_STORE_URL()}/admin/products/${product.id}`,
+    productUrl: `https://${storeUrl}/products/${product.handle}`,
+    adminUrl: `https://${storeUrl}/admin/products/${product.id}`,
   };
 }

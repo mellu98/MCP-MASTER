@@ -14,10 +14,13 @@ app.use(express.json());
 app.use(express.static(join(__dirname, "public")));
 
 app.post("/api/generate", async (req, res) => {
-  const { url, copyInstructions } = req.body;
+  const { url, copyInstructions, shopifyStoreUrl, shopifyAccessToken } = req.body;
 
   if (!url) {
     return res.status(400).json({ error: "URL is required" });
+  }
+  if (!shopifyStoreUrl || !shopifyAccessToken) {
+    return res.status(400).json({ error: "Shopify credentials are required" });
   }
 
   // SSE-style streaming response
@@ -54,6 +57,8 @@ app.post("/api/generate", async (req, res) => {
     send({ step: 4, status: "active" });
 
     const result = await fullImport(
+      shopifyStoreUrl,
+      shopifyAccessToken,
       productData,
       copyData,
       templateName,
@@ -112,8 +117,5 @@ app.post("/api/preview", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Landing Page Generator running at http://localhost:${PORT}`);
-  console.log(`Shopify Store: ${process.env.SHOPIFY_STORE_URL || "NOT SET"}`);
-  console.log(
-    `OpenAI API: ${process.env.OPENAI_API_KEY ? "configured" : "NOT SET"}`
-  );
+  console.log(`OpenAI API: ${process.env.OPENAI_API_KEY ? "configured" : "NOT SET"}`);
 });

@@ -7,9 +7,5 @@ services:
     envVars:
       - key: OPENAI_API_KEY
         sync: false
-      - key: SHOPIFY_STORE_URL
-        sync: false
-      - key: SHOPIFY_ACCESS_TOKEN
-        sync: false
       - key: NODE_ENV
         value: production

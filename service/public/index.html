@@ -160,6 +160,21 @@
         <label>Istruzioni Copy (opzionale)</label>
         <textarea id="copyInstructions" placeholder="Es: Scrivi in italiano, tono giovane e diretto, focus sui benefici per la pelle..."></textarea>
       </div>
+    </div>
+
+    <div class="card">
+      <h2 style="font-size:18px; margin-bottom:20px; color:#ccc;">Shopify Store</h2>
+      <div class="field">
+        <label>Store URL</label>
+        <input type="text" id="shopifyStoreUrl" placeholder="tuostore.myshopify.com" />
+      </div>
+      <div class="field">
+        <label>Access Token</label>
+        <input type="text" id="shopifyAccessToken" placeholder="shpat_..." />
+      </div>
+    </div>
+
+    <div class="card">
       <button class="btn" id="generateBtn" onclick="generate()">Genera Landing Page</button>
     </div>
 
@@ -182,7 +197,10 @@
   <script>
     async function generate() {
       const url = document.getElementById('aliUrl').value.trim();
+      const shopifyStoreUrl = document.getElementById('shopifyStoreUrl').value.trim();
+      const shopifyAccessToken = document.getElementById('shopifyAccessToken').value.trim();
       if (!url) return alert('Inserisci un link AliExpress');
+      if (!shopifyStoreUrl || !shopifyAccessToken) return alert('Inserisci le credenziali Shopify');
 
       const btn = document.getElementById('generateBtn');
       const progress = document.getElementById('progress');
@@ -208,7 +226,7 @@
         const response = await fetch('/api/generate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url, copyInstructions }),
+          body: JSON.stringify({ url, copyInstructions, shopifyStoreUrl, shopifyAccessToken }),
         });
 
         const reader = response.body.getReader();

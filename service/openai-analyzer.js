@@ -70,70 +70,84 @@ COPY RULES:
 - Strong call to action with urgency
 - Objection handling and persuasive reassurance
 - Use negative reviews/objections to craft powerful headlines, mechanisms, differentiation, and objection-destroying sections
-- All output must be long-form and structured to fully fill all necessary sections of a Shopify-style product landing page template
 - Prioritize clarity, persuasion, psychological triggers, and conversion optimization above creativity
 - No generic copy ever
+
+LUNGHEZZA COPY — Rispetta queste lunghezze dalla landing page di riferimento:
+- Hero headline: 5-8 parole con <strong>, es: "<strong>Impara a Fare Vendite in Dropshipping</strong>"
+- Hero subheadline: 3-6 parole, es: "<strong>[In Soli 7 Giorni]</strong>"
+- Hero caption: 5-10 parole, es: "Presentazione del nuovo prodotto rivoluzionario"
+- Product description: 2-3 frasi in un <p>, conciso ma persuasivo
+- Benefit cards title: 2-4 parole max (es: "Spedizione Veloce")
+- Benefit cards description: 1-2 frasi brevi (max 120 caratteri)
+- Feature rows heading: 3-5 parole (es: "Esperienza Mobile Superiore")
+- Feature rows text: 2-3 frasi in un paragrafo (max 200 caratteri)
+- Comparison rows benefit: frase breve 3-6 parole (es: "Ottimizzato per le conversioni")
+- Scrolling text: 5-10 parole (es: "Ordina il tuo ((fantastico)) prodotto [Ora]")
+- FAQ domanda: 1 frase breve e diretta
+- FAQ risposta: 2-3 frasi max
+- Reviews text: 1-2 frasi come scriverebbe una persona vera
+- CTA text: 2-4 parole (es: "Ordina Ora")
+- Urgency text: 1 frase breve
 
 ${copyInstructions ? `ISTRUZIONI AGGIUNTIVE DALL'UTENTE:\n${copyInstructions}\n\nSegui queste istruzioni con precisione.` : ""}`,
       },
       {
         role: "user",
-        content: `Basandoti su questi dati prodotto, genera TUTTO il copy necessario per una landing page Shopify ad alta conversione. Scrivi in italiano colloquiale, stile "Signora al mercato" — persuasivo, diretto, concreto.
+        content: `Basandoti su questi dati prodotto, genera TUTTO il copy necessario per una landing page Shopify ad alta conversione. Scrivi in italiano colloquiale, stile "Signora al mercato" — persuasivo, diretto, concreto. Rispetta le lunghezze indicate nelle regole.
 
 DATI PRODOTTO:
 ${JSON.stringify(productData, null, 2)}
 
 Genera un oggetto JSON con questi campi (TUTTO IN ITALIANO):
 {
-  "hero_headline": "Headline principale (potente, benefit-driven, usa <strong> per enfasi). Struttura: aggettivo + nome prodotto + funzione primaria + valore aggiunto forte",
-  "hero_subheadline": "Sub-headline che rinforza la promessa con meccanismo specifico, numeri, risultati concreti",
-  "hero_caption": "Caption breve/tagline sopra o sotto la headline",
-  "product_description_html": "Descrizione prodotto HTML ricca e lunga per la sezione prodotto principale. Deve includere: agitazione del problema, soluzione, meccanismo, benefici concreti, prova sociale, stack dell'offerta, garanzia. Usa <p>, <strong>, <br/> per formattare. Deve essere LUNGA e persuasiva.",
+  "hero_headline": "<strong>Aggettivo + Nome Prodotto + Funzione</strong> (5-8 parole)",
+  "hero_subheadline": "<strong>[Valore Aggiunto Forte]</strong> (3-6 parole)",
+  "hero_caption": "Tagline breve 5-10 parole",
+  "product_description_html": "<p>2-3 frasi concise e persuasive con <strong> per enfasi</p>",
   "benefit_cards": [
-    {"title": "Titolo Beneficio", "description": "Descrizione beneficio 2-3 frasi, concreta e emotiva"},
-    {"title": "Titolo Beneficio", "description": "Descrizione beneficio 2-3 frasi"},
-    {"title": "Titolo Beneficio", "description": "Descrizione beneficio 2-3 frasi"},
-    {"title": "Titolo Beneficio", "description": "Descrizione beneficio 2-3 frasi"},
-    {"title": "Titolo Beneficio", "description": "Descrizione beneficio 2-3 frasi"},
-    {"title": "Titolo Beneficio", "description": "Descrizione beneficio 2-3 frasi"}
+    {"title": "2-4 parole", "description": "1-2 frasi brevi max 120 caratteri"},
+    {"title": "2-4 parole", "description": "1-2 frasi brevi"},
+    {"title": "2-4 parole", "description": "1-2 frasi brevi"},
+    {"title": "2-4 parole", "description": "1-2 frasi brevi"},
+    {"title": "2-4 parole", "description": "1-2 frasi brevi"},
+    {"title": "2-4 parole", "description": "1-2 frasi brevi"}
   ],
   "feature_rows": [
-    {"heading": "Titolo feature persuasivo", "text": "Paragrafo lungo che spiega il beneficio, agita il problema e posiziona la soluzione"},
-    {"heading": "Titolo feature", "text": "Paragrafo descrittivo lungo"},
-    {"heading": "Titolo feature", "text": "Paragrafo descrittivo lungo"},
-    {"heading": "Titolo feature", "text": "Paragrafo descrittivo lungo"},
-    {"heading": "Titolo feature", "text": "Paragrafo descrittivo lungo"}
+    {"heading": "3-5 parole", "text": "2-3 frasi max 200 caratteri"},
+    {"heading": "3-5 parole", "text": "2-3 frasi"},
+    {"heading": "3-5 parole", "text": "2-3 frasi"},
+    {"heading": "3-5 parole", "text": "2-3 frasi"},
+    {"heading": "3-5 parole", "text": "2-3 frasi"}
   ],
   "comparison_rows": [
-    {"benefit": "Punto di confronto (noi vs altri)", "us": true, "them": false},
-    {"benefit": "Punto di confronto", "us": true, "them": false},
-    {"benefit": "Punto di confronto", "us": true, "them": false},
-    {"benefit": "Punto di confronto", "us": true, "them": true},
-    {"benefit": "Punto di confronto", "us": true, "them": false},
-    {"benefit": "Punto di confronto", "us": true, "them": false}
+    {"benefit": "Frase breve 3-6 parole", "us": true, "them": false},
+    {"benefit": "Frase breve", "us": true, "them": false},
+    {"benefit": "Frase breve", "us": true, "them": false},
+    {"benefit": "Frase breve", "us": true, "them": true},
+    {"benefit": "Frase breve", "us": true, "them": false},
+    {"benefit": "Frase breve", "us": true, "them": false}
   ],
-  "scrolling_text": "Testo breve e accattivante per il marquee scorrevole (es: ((Offerta Limitata)) [Ordina Ora] Prima Che Finisca)",
+  "scrolling_text": "5-10 parole accattivanti",
   "faq_items": [
-    {"question": "Domanda FAQ che distrugge un'obiezione", "answer": "Risposta persuasiva che rassicura e spinge all'acquisto"},
-    {"question": "Domanda FAQ", "answer": "Risposta"},
-    {"question": "Domanda FAQ", "answer": "Risposta"},
-    {"question": "Domanda FAQ", "answer": "Risposta"},
-    {"question": "Domanda FAQ", "answer": "Risposta"}
+    {"question": "Domanda breve e diretta", "answer": "Risposta 2-3 frasi max"},
+    {"question": "Domanda", "answer": "Risposta"},
+    {"question": "Domanda", "answer": "Risposta"}
   ],
   "reviews": [
-    {"name": "Nome italiano L.", "date": "Mese Anno", "title": "Titolo recensione entusiasta", "text": "Testo recensione realistica in italiano, 2-3 frasi, come scriverebbe una persona vera", "rating": 5},
-    {"name": "Nome L.", "date": "Mese Anno", "title": "Titolo", "text": "Testo recensione", "rating": 5},
-    {"name": "Nome L.", "date": "Mese Anno", "title": "Titolo", "text": "Testo recensione", "rating": 5},
-    {"name": "Nome L.", "date": "Mese Anno", "title": "Titolo", "text": "Testo recensione", "rating": 4},
-    {"name": "Nome L.", "date": "Mese Anno", "title": "Titolo", "text": "Testo recensione", "rating": 5}
+    {"name": "Nome italiano L.", "date": "Mese Anno", "title": "Titolo breve", "text": "1-2 frasi realistiche", "rating": 5},
+    {"name": "Nome L.", "date": "Mese Anno", "title": "Titolo", "text": "1-2 frasi", "rating": 5},
+    {"name": "Nome L.", "date": "Mese Anno", "title": "Titolo", "text": "1-2 frasi", "rating": 5},
+    {"name": "Nome L.", "date": "Mese Anno", "title": "Titolo", "text": "1-2 frasi", "rating": 4},
+    {"name": "Nome L.", "date": "Mese Anno", "title": "Titolo", "text": "1-2 frasi", "rating": 5}
   ],
-  "cta_text": "Testo call-to-action bottone (breve, urgente, in italiano)",
-  "urgency_text": "Testo urgenza/scarsita (es: Ultimi pezzi disponibili - Offerta valida solo oggi!)",
-  "seo_title": "Titolo SEO ottimizzato in italiano",
+  "cta_text": "2-4 parole (es: Ordina Ora)",
+  "urgency_text": "1 frase breve di urgenza",
+  "seo_title": "Titolo SEO in italiano",
   "seo_description": "Meta description SEO in italiano"
 }
 
-Il copy deve essere LUNGO, persuasivo, emotivo, con trigger psicologici. Zero copy generico. Ogni sezione deve vendere.
+Copy conciso ma persuasivo. Zero copy generico. Ogni parola deve vendere.
 IMPORTANT: Return ONLY valid JSON, no markdown.`,
       },
     ],

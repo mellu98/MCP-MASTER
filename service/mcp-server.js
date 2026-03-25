@@ -436,9 +436,170 @@ const httpServer = createServer(async (req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`);
 
   // Health check
-  if (url.pathname === "/" || url.pathname === "/health") {
+  if (url.pathname === "/health") {
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end(JSON.stringify({ status: "ok", name: "landing-page-generator", version: "2.0.0" }));
+    return;
+  }
+
+  // ─── Shopify OAuth: form page ───
+  if (url.pathname === "/" && req.method === "GET") {
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+    res.end(`<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP Master — Shopify Token</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .card { background: #141414; border: 1px solid #2a2a2a; border-radius: 16px; padding: 40px; max-width: 480px; width: 90%; }
+    h1 { font-size: 24px; margin-bottom: 8px; }
+    p.sub { color: #888; font-size: 14px; margin-bottom: 32px; }
+    label { display: block; font-size: 13px; color: #aaa; margin-bottom: 6px; margin-top: 20px; }
+    input { width: 100%; padding: 12px 14px; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 15px; outline: none; }
+    input:focus { border-color: #fff; }
+    button { width: 100%; margin-top: 28px; padding: 14px; background: #fff; color: #000; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; }
+    button:hover { background: #e0e0e0; }
+    .info { margin-top: 20px; padding: 14px; background: #1a1a1a; border-radius: 8px; font-size: 13px; color: #888; line-height: 1.5; }
+    .token-result { margin-top: 20px; padding: 16px; background: #0d2818; border: 1px solid #1a5c2e; border-radius: 8px; word-break: break-all; }
+    .token-result code { color: #4ade80; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>MCP Master</h1>
+    <p class="sub">Installa l'app sul tuo store Shopify e ottieni il token</p>
+    <form id="oauth-form">
+      <label>Store URL (es: mystore.myshopify.com)</label>
+      <input type="text" id="store" placeholder="mystore.myshopify.com" required>
+      <label>Client ID (API Key)</label>
+      <input type="text" id="client_id" placeholder="Client ID dell'app" required>
+      <label>Client Secret</label>
+      <input type="password" id="client_secret" placeholder="Client Secret dell'app" required>
+      <button type="submit">Installa App e Ottieni Token</button>
+    </form>
+    <div class="info">
+      <strong>Come ottenere Client ID e Secret:</strong><br>
+      Shopify Admin &rarr; Settings &rarr; Apps &rarr; Develop apps &rarr; Create app &rarr; API credentials
+    </div>
+    <div id="result"></div>
+  </div>
+  <script>
+    document.getElementById('oauth-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const store = document.getElementById('store').value.replace('https://','').replace('/','');
+      const clientId = document.getElementById('client_id').value.trim();
+      const clientSecret = document.getElementById('client_secret').value.trim();
+      const scopes = 'write_products,read_products,write_themes,read_themes,write_files,read_files,write_content,read_content';
+      const redirectUri = window.location.origin + '/auth/callback';
+      // Save client_secret in sessionStorage for the callback
+      sessionStorage.setItem('shopify_client_secret', clientSecret);
+      sessionStorage.setItem('shopify_client_id', clientId);
+      sessionStorage.setItem('shopify_store', store);
+      const authUrl = 'https://' + store + '/admin/oauth/authorize?client_id=' + clientId + '&scope=' + scopes + '&redirect_uri=' + encodeURIComponent(redirectUri);
+      window.location.href = authUrl;
+    });
+  </script>
+</body>
+</html>`);
+    return;
+  }
+
+  // ─── Shopify OAuth: callback ───
+  if (url.pathname === "/auth/callback" && req.method === "GET") {
+    const code = url.searchParams.get("code");
+    const shop = url.searchParams.get("shop");
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+    res.end(`<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP Master — Token</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .card { background: #141414; border: 1px solid #2a2a2a; border-radius: 16px; padding: 40px; max-width: 520px; width: 90%; }
+    h1 { font-size: 24px; margin-bottom: 8px; }
+    p.sub { color: #888; font-size: 14px; margin-bottom: 24px; }
+    .loading { color: #facc15; }
+    .success { margin-top: 16px; padding: 16px; background: #0d2818; border: 1px solid #1a5c2e; border-radius: 8px; }
+    .success label { color: #4ade80; font-size: 13px; margin-bottom: 4px; display: block; }
+    .success code { color: #fff; font-size: 14px; word-break: break-all; display: block; margin-bottom: 12px; user-select: all; }
+    .error { margin-top: 16px; padding: 16px; background: #2d1215; border: 1px solid #5c1a1a; border-radius: 8px; color: #f87171; }
+    button { margin-top: 12px; padding: 10px 20px; background: #fff; color: #000; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>MCP Master</h1>
+    <p class="sub">Scambio codice per token...</p>
+    <div id="status" class="loading">Contatto Shopify...</div>
+    <div id="result"></div>
+  </div>
+  <script>
+    (async () => {
+      const code = "${code || ""}";
+      const shop = "${shop || ""}";
+      const clientId = sessionStorage.getItem('shopify_client_id');
+      const clientSecret = sessionStorage.getItem('shopify_client_secret');
+      if (!code || !shop || !clientId || !clientSecret) {
+        document.getElementById('status').textContent = '';
+        document.getElementById('result').innerHTML = '<div class="error">Dati mancanti. Torna alla pagina principale e riprova.</div>';
+        return;
+      }
+      try {
+        const res = await fetch('/auth/token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ shop, code, client_id: clientId, client_secret: clientSecret })
+        });
+        const data = await res.json();
+        if (data.access_token) {
+          document.getElementById('status').textContent = 'Token ottenuto!';
+          document.getElementById('result').innerHTML =
+            '<div class="success">' +
+            '<label>Store</label><code>' + shop + '</code>' +
+            '<label>Access Token</label><code>' + data.access_token + '</code>' +
+            '<button onclick="navigator.clipboard.writeText(\\'' + data.access_token + '\\')">Copia Token</button>' +
+            '</div>';
+          sessionStorage.clear();
+        } else {
+          throw new Error(data.error || 'Token non ricevuto');
+        }
+      } catch (err) {
+        document.getElementById('status').textContent = '';
+        document.getElementById('result').innerHTML = '<div class="error">Errore: ' + err.message + '</div>';
+      }
+    })();
+  </script>
+</body>
+</html>`);
+    return;
+  }
+
+  // ─── Shopify OAuth: token exchange (server-side) ───
+  if (url.pathname === "/auth/token" && req.method === "POST") {
+    let body = "";
+    req.on("data", (chunk) => { body += chunk; });
+    req.on("end", async () => {
+      try {
+        const { shop, code, client_id, client_secret } = JSON.parse(body);
+        const tokenRes = await fetch(`https://${shop}/admin/oauth/access_token`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ client_id, client_secret, code }),
+        });
+        const tokenData = await tokenRes.json();
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(tokenData));
+      } catch (err) {
+        res.writeHead(500, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: err.message }));
+      }
+    });
     return;
   }
 

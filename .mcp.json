@@ -2,7 +2,7 @@
   "mcpServers": {
     "landing-page": {
       "type": "sse",
-      "url": "https://landing-page-generator.onrender.com/sse"
+      "url": "https://mcp-master-a7f9.onrender.com/sse"
     }
   }
 }

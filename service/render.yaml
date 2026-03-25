@@ -2,10 +2,13 @@ services:
   - type: web
     name: landing-page-generator
     runtime: node
+    rootDir: service
     buildCommand: npm install
-    startCommand: node server.js
+    startCommand: node mcp-server.js
     envVars:
       - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENROUTER_API_KEY
         sync: false
       - key: NODE_ENV
         value: production

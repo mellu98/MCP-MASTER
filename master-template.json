@@ -1,0 +1,1038 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "review_numbers_v2156v": {
+          "type": "pp_review_numbers",
+          "settings": {
+            "rating": 5,
+            "stars_color": "#facc15",
+            "review_count": 320,
+            "review_text": "recensioni"
+          }
+        },
+        "title_zqqxfj": {
+          "type": "title",
+          "settings": {
+            "title_size": 28,
+            "title_height": 120,
+            "text_transform": "none"
+          }
+        },
+        "product_subtitle_j37yni": {
+          "type": "pp_text",
+          "settings": {
+            "text": "Ripara la Carrozzeria in 5 Minuti Senza costi esagerati dal Carrozziere e Senza stucchi",
+            "text_style": "subtitle"
+          }
+        },
+        "price_de85pq": {
+          "type": "price",
+          "settings": {
+            "price_style": "price",
+            "price_size": 20,
+            "badge_text_1": 13,
+            "price_first": false,
+            "badge_bg_1": "#ffffff",
+            "badge_price_1": "#cc0d39",
+            "price_size_2": 1,
+            "badge_price": "#8b8d8f",
+            "price_bold_2": false,
+            "sale_price_color": "#454444",
+            "regular_price_color": "#212121",
+            "price_bold": true,
+            "badge_hide": false,
+            "taxes_hide": false,
+            "shipping_hide": false,
+            "padding_top": 4,
+            "padding_bottom": 4
+          }
+        },
+        "divider_qgys98": {
+          "type": "pp_divider",
+          "disabled": true,
+          "settings": {}
+        },
+        "benefit_jvwvak": {
+          "type": "pp_text",
+          "settings": {
+            "text": "🚗 Rimuove piccole e medie ammaccature",
+            "text_style": "body"
+          }
+        },
+        "benefit_9phafb": {
+          "type": "pp_text",
+          "settings": {
+            "text": "🧲 Non danneggia la vernice grazie alla ventosa morbida",
+            "text_style": "body"
+          }
+        },
+        "benefit_3gglw3": {
+          "type": "pp_text",
+          "settings": {
+            "text": "♻️ Riutilizzabile più volte",
+            "text_style": "body"
+          }
+        },
+        "benefit_jrkzay": {
+          "type": "pp_text",
+          "settings": {
+            "text": "🪞 Funziona su diverse superfici lisce di carrozzeria",
+            "text_style": "body"
+          }
+        },
+        "fomo_FgxyXk": {
+          "type": "fomo",
+          "settings": {
+            "fomo_text_before": "(x) Visitatori",
+            "text_style": "body",
+            "text_size": 14,
+            "color_scheme": "background-1",
+            "fomo_border_activate": false,
+            "fomo_border": 0,
+            "fomo_border_color": "#efefef",
+            "pill_color": "#fd0234",
+            "fomo_min": 5,
+            "fomo_max": 9,
+            "fomo_speed": 3,
+            "padding_top": 12,
+            "padding_bottom": 12,
+            "margin_top": 36,
+            "margin_bottom": 36
+          }
+        },
+        "divider_g27rz3": {
+          "type": "pp_divider",
+          "disabled": true,
+          "settings": {}
+        },
+        "quantity_hxympz": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {
+            "enable_quantity_discounts": false,
+            "headline": "BUNDLE & SAVE",
+            "txt_size_head_qb": 18,
+            "sub_headline": "This offer is for limited time only",
+            "txt_size_subhead_qb": 12,
+            "background_top_qb": "#ffffff",
+            "background_top_text_qb": "#212121",
+            "background_qb": "#ffffff",
+            "border_qb": "#000000",
+            "check_bg_qb": "#e9ecef",
+            "check_border_qb": "#000000",
+            "check_dot": "#000000",
+            "hover_bg_qb": "#ffffff",
+            "hover_border_qb": "#000000",
+            "badge_qb": "#000000",
+            "badge_qb_text": "#ffffff",
+            "compare_price": "#000000",
+            "qb_border_wd": 2,
+            "qb_border": 4,
+            "padding_top": 20,
+            "padding_bottom": 20,
+            "preselected": "option_2",
+            "display_badge": "option_2",
+            "badge_text": "Most Popular",
+            "option_1_quantity": 1,
+            "option_1_label": "",
+            "option_1_benefit": "",
+            "option_1_caption": "Only [item_price] per Item",
+            "option_1_discount_type": "none",
+            "option_1_percentage_off": 0,
+            "option_1_fixed_amount_off": "0",
+            "option_2_quantity": 2,
+            "option_2_label": "",
+            "option_2_benefit": "",
+            "option_2_caption": "Only [item_price] per Item",
+            "option_2_discount_type": "percentage",
+            "option_2_percentage_off": 20,
+            "option_2_fixed_amount_off": "0",
+            "option_3_quantity": 3,
+            "option_3_label": "",
+            "option_3_benefit": "",
+            "option_3_caption": "Only [item_price] per Item",
+            "option_3_discount_type": "percentage",
+            "option_3_percentage_off": 30,
+            "option_3_fixed_amount_off": "0",
+            "option_4_quantity": 4,
+            "option_4_label": "",
+            "option_4_benefit": "",
+            "option_4_caption": "Only [item_price] per Item",
+            "option_4_discount_type": "percentage",
+            "option_4_percentage_off": 40,
+            "option_4_fixed_amount_off": "0"
+          }
+        },
+        "variant_picker_87x271": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "label_style": "body",
+            "font_size": 14,
+            "font_style": "normal",
+            "swatchType": "color",
+            "optionName": "Color",
+            "swatchStyle": "round",
+            "swatchSize": 30,
+            "swatchHeight": 30,
+            "size_trigger": "",
+            "chart_id": "Size Chart",
+            "size_page": ""
+          }
+        },
+        "buy_buttons_yg52ac": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_full_button": false,
+            "lm_main_button": "#000000",
+            "lm_main_button_gr": "",
+            "lm_main_text": "#ffffff",
+            "lm_button_animation": "soft",
+            "show_gift_card_recipient": true,
+            "skip_cart": false,
+            "cart_text": ""
+          }
+        },
+        "payment_JLLjrG": {
+          "type": "payment",
+          "settings": {
+            "original": "custom",
+            "payment_icon": "visa,master,paypal,apple_pay,shopify-pay,google-pay",
+            "payment_content_alignment": "center"
+          }
+        },
+        "icons_with-text_32gi14": {
+          "type": "pp_icons_with_text",
+          "settings": {
+            "icons_size": 30,
+            "guarantee_1_icon": "truck",
+            "guarantee_1_text": "Spedizione veloce",
+            "guarantee_2_icon": "box",
+            "guarantee_2_text": "Resi gratuiti",
+            "guarantee_3_icon": "heart",
+            "guarantee_3_text": "Garanzia di 30 giorni"
+          }
+        },
+        "divider_c4b9pp": {
+          "type": "pp_divider",
+          "settings": {}
+        },
+        "review_block_2cmnyx": {
+          "type": "pp_review_block",
+          "settings": {
+            "rating": 5,
+            "stars_color": "#facc15",
+            "image": "shopify:\/\/shop_images\/e2f9244b-d6f8-41e8-97f0-1cfdf7be9b94.webp",
+            "review": "Ho risolto subito piccoli danni sulla carrozzeria senza spendere una fortuna. Facile da usare anche in garage, risultati visibili e soddisfacenti: consigliato per chi ama fare da sé.",
+            "name": "Silvia C."
+          }
+        },
+        "divider_wt6gi1": {
+          "type": "pp_divider",
+          "settings": {}
+        },
+        "expandable_km2kwr": {
+          "type": "pp_expandable_text",
+          "settings": {
+            "title": "Informazioni sulla spedizione",
+            "content": "<p>Offriamo spedizione tracciata e assicurata per tutti i nostri ordini. L'elaborazione dell'ordine richiede 1-3 giorni lavorativi prima della spedizione.<\/p>",
+            "icon": "globe"
+          }
+        },
+        "expandable_clvwlj": {
+          "type": "pp_expandable_text",
+          "settings": {
+            "title": "Politica di reso",
+            "content": "<p>Amiamo i nostri prodotti e siamo sicuri che li amerai anche tu! Per questo offriamo una prova di 30 giorni senza rischi. Se non sei soddisfatto dei risultati, ti rimborseremo.<\/p>",
+            "icon": "back"
+          }
+        }
+      },
+      "block_order": [
+        "review_numbers_v2156v",
+        "title_zqqxfj",
+        "product_subtitle_j37yni",
+        "price_de85pq",
+        "divider_qgys98",
+        "benefit_jvwvak",
+        "benefit_9phafb",
+        "benefit_3gglw3",
+        "benefit_jrkzay",
+        "fomo_FgxyXk",
+        "divider_g27rz3",
+        "quantity_hxympz",
+        "variant_picker_87x271",
+        "buy_buttons_yg52ac",
+        "payment_JLLjrG",
+        "icons_with-text_32gi14",
+        "divider_c4b9pp",
+        "review_block_2cmnyx",
+        "divider_wt6gi1",
+        "expandable_km2kwr",
+        "expandable_clvwlj"
+      ],
+      "custom_css": [],
+      "settings": {
+        "enable_sticky_info": true,
+        "show_feature_media": false,
+        "color_scheme": "",
+        "show_container": true,
+        "container_radius": 10,
+        "container_padding": 30,
+        "container_color": "#ffffff",
+        "container_border_color": "#ff9f00",
+        "container_text": "",
+        "container_text_bg": "#212121",
+        "container_text_txt": "#ffffff",
+        "show_container_mb": true,
+        "container_padding_mb": 20,
+        "container_radius_mb": 8,
+        "container_color_mb": "#ffffff",
+        "container_border_color_mb": "#ffe7ec",
+        "media_size": "medium",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "thumbnail_size": 70,
+        "thumbnail_radius": 4,
+        "media_position": "left",
+        "image_zoom": "none",
+        "mobile_thumbnails": "show",
+        "show_full_image": true,
+        "first_image_size": 100,
+        "second_image_size": 0,
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "padding_top": 8,
+        "padding_bottom": 76,
+        "padding_top_mb": 0,
+        "padding_bottom_mb": 36,
+        "heading_font_size": 24,
+        "body_font_size": 16,
+        "mobile_heading_font_size": 24,
+        "mobile_body_font_size": 14,
+        "pp_heading_color": "#000000",
+        "pp_body_color": "#000000",
+        "pp_brand_color": "#606c75",
+        "pp_button_background_color": "#000000",
+        "pp_button_text_color": "#ffffff",
+        "pp_border_radius": 16
+      }
+    },
+    "brands_4PBhWi": {
+      "type": "brands",
+      "blocks": {
+        "image_EKCbPz": {
+          "type": "image",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/Screenshot.webp",
+            "logo_image_width": 200
+          }
+        },
+        "image_F4EHcY": {
+          "type": "image",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/Progetto_senza_titolo_20.gif",
+            "logo_image_width": 200
+          }
+        },
+        "image_f6YiEB": {
+          "type": "image",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/Progetto_senza_titolo_19.gif",
+            "logo_image_width": 200
+          }
+        },
+        "image_idCEmX": {
+          "type": "image",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/Progetto_senza_titolo_18.gif",
+            "logo_image_width": 200
+          }
+        }
+      },
+      "block_order": [
+        "image_EKCbPz",
+        "image_F4EHcY",
+        "image_f6YiEB",
+        "image_idCEmX"
+      ],
+      "name": "LOGO Slider",
+      "settings": {
+        "scroll_speed": 15,
+        "fade": false,
+        "color_scheme": "",
+        "padding_desktop": 16,
+        "padding_mobile": 8,
+        "padding_item_desktop": 36,
+        "padding_item_mobile": 24,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with-text_uj43hn": {
+      "type": "pp-image-with-text-v1-0-0",
+      "blocks": {
+        "heading_n6873k": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ammaccature improvvise in parcheggio o strada"
+          }
+        },
+        "text_4h5puh": {
+          "type": "text",
+          "settings": {
+            "text": "Non perdere tempo né soldi: il kit con ventose solleva la lamiera senza verniciare. Ripari piccoli danni subito, risparmi sul carrozziere e recuperi l’aspetto dell’auto in pochi minuti con strumenti facili da usare."
+          }
+        },
+        "button_1f4bgm": {
+          "type": "button",
+          "settings": {
+            "button_behaviour": "scroll_to_top",
+            "button_label": "Lo voglio",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_n6873k",
+        "text_4h5puh",
+        "button_1f4bgm"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/ChatGPT_Image_28_feb_2026_22_21_08.webp",
+        "image_alt": "Togliammaccature FacilePro",
+        "layout": "image_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_background": "",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "margin_top_mobile": 30,
+        "margin_bottom_mobile": 0
+      }
+    },
+    "image_with-benefits_x32zfs": {
+      "type": "pp-image-with-benefits-v1-0-0",
+      "blocks": {
+        "benefit_h4rlgp": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🔧",
+            "title": "Semplicità",
+            "description": "Procedura intuitiva per riparare ammaccature senza esperienza tecnica."
+          }
+        },
+        "benefit_isswbi": {
+          "type": "benefit",
+          "settings": {
+            "icon": "💸",
+            "title": "Risparmio",
+            "description": "Evita fatture costose dal carrozziere gestendo riparazioni semplici."
+          }
+        },
+        "benefit_be6rx3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "⏱️",
+            "title": "Velocità",
+            "description": "Riparazioni rapide a casa in pochi minuti, senza appuntamenti."
+          }
+        },
+        "benefit_fzysfo": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🛡️",
+            "title": "Protezione",
+            "description": "Ventose morbide che preservano la vernice e la finitura dell’auto."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_h4rlgp",
+        "benefit_isswbi",
+        "benefit_be6rx3",
+        "benefit_fzysfo"
+      ],
+      "settings": {
+        "heading": "Trasforma danni visivi in auto come nuove",
+        "subtitle": "Kit pratico e sicuro che permette di rimuovere ammaccature leggere a casa, risparmiando tempo e spese di carrozzeria con risultati visibili.",
+        "image": "shopify:\/\/shop_images\/ChatGPT_Image_28_feb_2026_22_29_48.webp",
+        "image_rounded_type": "circle",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "section_background": "",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "margin_top_mobile": 30,
+        "margin_bottom_mobile": 30
+      }
+    },
+    "differences_5s9c85": {
+      "type": "pp-differences-v1-0-0",
+      "blocks": {
+        "comparison_52puzc": {
+          "type": "comparison_item",
+          "settings": {
+            "feature": "Potenza",
+            "product_has_feature": true,
+            "competitor_has_feature": false
+          }
+        },
+        "comparison_4k5qsi": {
+          "type": "comparison_item",
+          "settings": {
+            "feature": "Semplicità",
+            "product_has_feature": true,
+            "competitor_has_feature": false
+          }
+        },
+        "comparison_7qwyje": {
+          "type": "comparison_item",
+          "settings": {
+            "feature": "Precisione",
+            "product_has_feature": true,
+            "competitor_has_feature": false
+          }
+        },
+        "comparison_3oq3tg": {
+          "type": "comparison_item",
+          "settings": {
+            "feature": "Portabilità",
+            "product_has_feature": true,
+            "competitor_has_feature": false
+          }
+        },
+        "comparison_ezd5gm": {
+          "type": "comparison_item",
+          "settings": {
+            "feature": "Conveniente",
+            "product_has_feature": true,
+            "competitor_has_feature": false
+          }
+        }
+      },
+      "block_order": [
+        "comparison_52puzc",
+        "comparison_4k5qsi",
+        "comparison_7qwyje",
+        "comparison_3oq3tg",
+        "comparison_ezd5gm"
+      ],
+      "settings": {
+        "heading": "Perché Togliammaccature FacilePro si distingue",
+        "description": "Rispetto ad altri, il kit offre ventose resistenti e presa potente, uso semplice per utenti senza esperienza, risultato estetico immediato e costi contenuti per la manutenzione della carrozzeria.",
+        "button_label": "",
+        "button_link": "",
+        "product_title": "Togliammaccature FacilePro",
+        "competitor_title": "Altri",
+        "button_behaviour": "scroll_to_top",
+        "layout": "text_first",
+        "content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_background": "",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "margin_top_mobile": 30,
+        "margin_bottom_mobile": 0
+      }
+    },
+    "image_with-percentage_ydhuzj": {
+      "type": "pp-image-with-percentage-v1-0-0",
+      "blocks": {
+        "heading_26dm80": {
+          "type": "heading",
+          "settings": {
+            "heading": "Prova risultati rapidi e sicuri"
+          }
+        },
+        "percentage_items_qlrbm0": {
+          "type": "percentage_items",
+          "settings": {
+            "color_end": "#d1d5db",
+            "percentage_1": 98,
+            "text_1": "Segnalato che il kit ha reso le riparazioni casalinghe semplici e veloci.",
+            "percentage_2": 97,
+            "text_2": "Notato risparmio immediato rispetto all’officina convenzionale.",
+            "percentage_3": 96,
+            "text_3": "Sperimentato protezione della vernice durante l’uso regolare."
+          }
+        },
+        "button_4zj1qi": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_behaviour": "scroll_to_top",
+            "button_label": "Ordina ora",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_26dm80",
+        "percentage_items_qlrbm0",
+        "button_4zj1qi"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/ChatGPT_Image_28_feb_2026_22_27_47_1.webp",
+        "layout": "image_first",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_background": "",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "margin_top_mobile": 30,
+        "margin_bottom_mobile": 30
+      }
+    },
+    "image_with-text_n4bdbq": {
+      "type": "pp-image-with-text-v1-0-0",
+      "blocks": {
+        "heading_kq4quw": {
+          "type": "heading",
+          "settings": {
+            "heading": "Paura di danneggiare la vernice durante i tentativi"
+          }
+        },
+        "text_vqp1of": {
+          "type": "text",
+          "settings": {
+            "text": "La presa sicura e morbida delle ventose protegge la vernice. Puoi lavorare con delicatezza, evitando graffi. Ideale per chi vuole cura estetica senza esperienza tecnica e senza rischiare nuovi danni."
+          }
+        },
+        "button_5hv4ho": {
+          "type": "button",
+          "settings": {
+            "button_behaviour": "scroll_to_top",
+            "button_label": "Lo voglio",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_kq4quw",
+        "text_vqp1of",
+        "button_5hv4ho"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/ChatGPT_Image_28_feb_2026_22_25_43.webp",
+        "image_alt": "Togliammaccature FacilePro",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_background": "",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "margin_top_mobile": 30,
+        "margin_bottom_mobile": 0
+      }
+    },
+    "brands_4wFFUN": {
+      "type": "brands",
+      "blocks": {
+        "image_kAeVxk": {
+          "type": "image",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/Progetto_senza_titolo_20.gif",
+            "logo_image_width": 200
+          }
+        },
+        "image_W9QGMm": {
+          "type": "image",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/Progetto_senza_titolo_19.gif",
+            "logo_image_width": 200
+          }
+        },
+        "image_DD7T4W": {
+          "type": "image",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/Progetto_senza_titolo_18.gif",
+            "logo_image_width": 200
+          }
+        }
+      },
+      "block_order": [
+        "image_kAeVxk",
+        "image_W9QGMm",
+        "image_DD7T4W"
+      ],
+      "name": "LOGO Slider",
+      "settings": {
+        "scroll_speed": 15,
+        "fade": false,
+        "color_scheme": "",
+        "padding_desktop": 16,
+        "padding_mobile": 8,
+        "padding_item_desktop": 36,
+        "padding_item_mobile": 24,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "faqs_0owlk1": {
+      "type": "pp-faqs-v1-0-0",
+      "blocks": {
+        "faq_1kncfp": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Il kit funziona su qualsiasi carrozzeria?",
+            "answer": "Funziona meglio su ammaccature piccole e medie senza rottura della vernice. Per danni profondi o ruggine è consigliabile consultare un professionista."
+          }
+        },
+        "faq_hpftnh": {
+          "type": "faq_item",
+          "settings": {
+            "question": "È difficile usare le ventose senza esperienza?",
+            "answer": "No: il kit è progettato per essere intuitivo. Segui le istruzioni incluse e ottieni risultati visibili in pochi passaggi, anche senza competenze tecniche."
+          }
+        },
+        "faq_te9gto": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Posso danneggiare la vernice con questo strumento?",
+            "answer": "Le ventose morbide proteggono la vernice se usate correttamente. Evita di esercitare forza eccessiva; la tecnica delicata è più efficace."
+          }
+        },
+        "faq_jpfr13": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Quanto tempo ci vuole per riparare un’ammaccatura?",
+            "answer": "Molte riparazioni leggere richiedono meno di 20 minuti, rendendo il kit ideale per chi ha poco tempo ma vuole cura estetica immediata."
+          }
+        },
+        "faq_hyhr83": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Cosa include il kit e dove lo conservo?",
+            "answer": "Include ventose di varie dimensioni e accessori per sollevamento. È compatto e si ripone facilmente nel bagagliaio per intervenire subito quando serve."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1kncfp",
+        "faq_hpftnh",
+        "faq_te9gto",
+        "faq_jpfr13",
+        "faq_hyhr83"
+      ],
+      "settings": {
+        "heading": "Domande frequenti sul kit Togliammaccature",
+        "description": "Risposte chiare per usare il prodotto con fiducia e ottenere risultati sicuri",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "button_behaviour": "scroll_to_top",
+        "button_label": "",
+        "button_link": "",
+        "faqitem_background": "",
+        "section_background": "",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "margin_top_mobile": 30,
+        "margin_bottom_mobile": 30
+      }
+    },
+    "call_to-action_o63nbj": {
+      "type": "pp-call-to-action-v1-0-0",
+      "blocks": {
+        "heading_wfq0xl": {
+          "type": "heading",
+          "settings": {
+            "heading": "Prova Togliammaccature FacilePro con garanzia 30 giorni"
+          }
+        },
+        "text_n8kt8b": {
+          "type": "text",
+          "settings": {
+            "text": "Prova il kit Togliammaccature FacilePro senza rischi per 30 giorni. Se non vedi miglioramenti o non sei soddisfatta, restituisci per rimborso. Ideale per chi vuole provare una soluzione economica e rapida prima del carrozziere."
+          }
+        },
+        "button_y6pmpd": {
+          "type": "button",
+          "settings": {
+            "button_behaviour": "scroll_to_top",
+            "button_label": "Lo voglio",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_wfq0xl",
+        "text_n8kt8b",
+        "button_y6pmpd"
+      ],
+      "settings": {
+        "guarantee_icon": "certification",
+        "icon_size": 72,
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "section_background": "",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "margin_top_mobile": 30,
+        "margin_bottom_mobile": 30
+      }
+    },
+    "review_grid_f68731": {
+      "type": "pp-review-grid-v1-0-0",
+      "blocks": {
+        "review_tbibxa": {
+          "type": "review",
+          "settings": {
+            "name": "Martina F.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 4,
+            "review_text": "Lo uso in garage per piccoli lavori, fa risparmiare tempo e soldi; non risolve i danni profondi ma funziona sulle ammaccature leggere."
+          }
+        },
+        "review_uda9kw": {
+          "type": "review",
+          "settings": {
+            "name": "Lucia Z.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 5,
+            "review_text": "All'inizio ero scettica ma ho tolto due ammaccature sul cofano grazie a questo kit; ci vuole pazienza e tecnica, ma il risultato finale è stato sorprendente e mi ha risparmiato una riparazione costosa."
+          }
+        },
+        "review_4hvrwk": {
+          "type": "review",
+          "settings": {
+            "name": "Federica O.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 4,
+            "review_text": "Dovevo riallineare una zona del cofano: strumento compatto, presa buona e risultato che ha evitato un passaggio in officina."
+          }
+        },
+        "review_x460ev": {
+          "type": "review",
+          "settings": {
+            "name": "Ilaria H.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 4,
+            "review_text": "Ho sistemato una ammaccatura vicino allo sportello dopo un piccolo incidente in garage; richiede un po' di pratica ma alla fine funziona bene."
+          }
+        },
+        "review_v5d0jt": {
+          "type": "review",
+          "settings": {
+            "name": "Paola Q.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 4,
+            "review_text": "Non è la soluzione professionale per danni gravi, ma per ammaccature superficiali è una manna: risolve problemi rapidi senza spese folli."
+          }
+        },
+        "review_wr9nza": {
+          "type": "review",
+          "settings": {
+            "name": "Sara C.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 4,
+            "review_text": "Utile per ammaccature non troppo grandi, comodo da riporre in garage e da usare senza aiuto."
+          }
+        },
+        "review_jig1u2": {
+          "type": "review",
+          "settings": {
+            "name": "Anna R.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 4,
+            "review_text": "Funziona davvero."
+          }
+        },
+        "review_6hrogk": {
+          "type": "review",
+          "settings": {
+            "name": "Alessia T.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 4,
+            "review_text": "Un aiuto pratico per chi non vuole subito andare in carrozzeria, efficacia variabile ma spesso soddisfacente per danni leggeri."
+          }
+        },
+        "review_oit3k3": {
+          "type": "review",
+          "settings": {
+            "name": "Giulia S.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 4,
+            "review_text": "Vale ogni centesimo!"
+          }
+        },
+        "review_c9nrci": {
+          "type": "review",
+          "settings": {
+            "name": "Sofia G.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 4,
+            "review_text": "Dopo averlo provato mi sento più autonoma per piccoli danni, non sempre perfetto ma spesso efficace e veloce."
+          }
+        },
+        "review_345qly": {
+          "type": "review",
+          "settings": {
+            "name": "Francesca P.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 5,
+            "review_text": "Mi ha salvato dopo un piccolo incidente in parcheggio, pratico e portatile, ritorno alla carrozzeria molto meglio."
+          }
+        },
+        "review_0fa21s": {
+          "type": "review",
+          "settings": {
+            "name": "Valentina D.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 4,
+            "review_text": "Mi ha permesso di sistemare la portiera dopo un batti e vai nel parcheggio; risultato discreto e risparmio garantito."
+          }
+        },
+        "review_jcd4fj": {
+          "type": "review",
+          "settings": {
+            "name": "Camilla K.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 5,
+            "review_text": "In vacanza ho trovato una piccola botta sul bagagliaio, l'ho sistemata da sola in pochi minuti, pratico da portare e semplice da usare. 😊"
+          }
+        },
+        "review_xqwax9": {
+          "type": "review",
+          "settings": {
+            "name": "Beatrice N.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 5,
+            "review_text": "Buono per un fix rapido dopo un piccolo urto in strada, maneggevole e con ventose che aderiscono bene, non immacolato ma utile."
+          }
+        },
+        "review_ejkft7": {
+          "type": "review",
+          "settings": {
+            "name": "Elena M.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 4,
+            "review_text": "Facile da usare, ho tolto una botta piccola in pochi minuti senza stress."
+          }
+        },
+        "review_l9qegy": {
+          "type": "review",
+          "settings": {
+            "name": "Laura B.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 5,
+            "review_text": "Davvero comodo :)"
+          }
+        },
+        "review_jjw1zz": {
+          "type": "review",
+          "settings": {
+            "name": "Claudia V.",
+            "verified_text": "Acquirente Verificato",
+            "rating": 5,
+            "review_text": "Provato su una piccola cupola sul cofano: ha sollevato bene la lamiera, poi ho rifinito con un panno e pare nuovo."
+          }
+        }
+      },
+      "block_order": [
+        "review_tbibxa",
+        "review_uda9kw",
+        "review_4hvrwk",
+        "review_x460ev",
+        "review_v5d0jt",
+        "review_wr9nza",
+        "review_jig1u2",
+        "review_6hrogk",
+        "review_oit3k3",
+        "review_c9nrci",
+        "review_345qly",
+        "review_0fa21s",
+        "review_jcd4fj",
+        "review_xqwax9",
+        "review_ejkft7",
+        "review_l9qegy",
+        "review_jjw1zz"
+      ],
+      "settings": {
+        "rating": 5,
+        "heading": "Cosa dicono gli utenti",
+        "subheading": "Feedback reale e affidabile",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "section_background": "",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "margin_top_mobile": 30,
+        "margin_bottom_mobile": 30
+      }
+    },
+    "recommended_products_uswmbh": {
+      "type": "pp-recommended-products-v1-0-0",
+      "disabled": true,
+      "settings": {
+        "heading": "Prodotti consigliati",
+        "collection": "",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "section_background": "",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "margin_top_mobile": 30,
+        "margin_bottom_mobile": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "brands_4PBhWi",
+    "image_with-text_uj43hn",
+    "image_with-benefits_x32zfs",
+    "differences_5s9c85",
+    "image_with-percentage_ydhuzj",
+    "image_with-text_n4bdbq",
+    "brands_4wFFUN",
+    "faqs_0owlk1",
+    "call_to-action_o63nbj",
+    "review_grid_f68731",
+    "recommended_products_uswmbh"
+  ]
+}

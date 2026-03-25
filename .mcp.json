@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "landing-page": {
+      "type": "sse",
+      "url": "https://landing-page-generator.onrender.com/sse"
+    }
+  }
+}

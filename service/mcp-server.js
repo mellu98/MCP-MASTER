@@ -1,13 +1,14 @@
 import "dotenv/config";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 import { z } from "zod";
-import { analyzeAliExpressProduct } from "./openai-analyzer.js";
+import { extractProductData, generateCopy } from "./openai-analyzer.js";
 import { generateLandingTemplate } from "./template-generator.js";
 import * as shopify from "./shopify-client.js";
 import { readFileSync, writeFileSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { createServer } from "node:http";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const STATE_FILE = join(__dirname, ".landing-state.json");
@@ -38,7 +39,7 @@ server.tool(
   },
   async ({ url }) => {
     try {
-      const { productData } = await analyzeAliExpressProduct(url, "");
+      const productData = await extractProductData(url);
       const state = loadState() || {};
       state.productData = productData;
       state.url = url;
@@ -84,17 +85,16 @@ server.tool(
         };
       }
 
-      const { productData, copyData } = await analyzeAliExpressProduct(
-        state.url,
+      const copyData = await generateCopy(
+        state.productData,
         copy_instructions || ""
       );
 
       const { templateName, template } = generateLandingTemplate(
-        productData,
+        state.productData,
         copyData
       );
 
-      state.productData = productData;
       state.copyData = copyData;
       state.templateName = templateName;
       state.template = template;
@@ -104,7 +104,7 @@ server.tool(
         content: [
           {
             type: "text",
-            text: `Landing page generata!\n\n**Headline:** ${copyData.hero_headline}\n**Sub:** ${copyData.hero_subheadline}\n**CTA:** ${copyData.cta_text}\n\n**Sezioni:**\n- Hero\n- Video (placeholder)\n- Descrizione prodotto\n- Prodotto principale\n- CTA Button\n- Scrolling text\n- ${copyData.benefit_cards?.length || 0} Benefit cards\n- ${copyData.feature_rows?.length || 0} Feature rows\n- ${copyData.comparison_rows?.length || 0} Comparison rows\n- CTA Button 2\n- ${copyData.faq_items?.length || 0} FAQ\n- ${copyData.reviews?.length || 0} Reviews\n- Related products\n\nTemplate: ${templateName}\n\nOra puoi:\n- Modificare sezioni con "update_section"\n- Pubblicare su Shopify con "push_to_shopify"`,
+            text: `Landing page generata!\n\n**Subtitle:** ${copyData.product_subtitle}\n**CTA:** ${copyData.cta_heading}\n\n**Sezioni (come master):**\n1. Main product (4 benefit, review inline, buy button)\n2. Brand slider\n3. Immagine + testo 1\n4. ${copyData.benefit_cards?.length || 0} Benefit cards\n5. ${copyData.comparison_rows?.length || 0} Comparison rows\n6. Statistiche percentuali\n7. Immagine + testo 2\n8. Brand slider\n9. ${copyData.faq_items?.length || 0} FAQ\n10. Call to action\n11. ${copyData.reviews?.length || 0} Reviews\n12. Prodotti consigliati (disabled)\n\nTemplate: ${templateName}\n\nOra puoi:\n- Modificare sezioni con "update_section"\n- Pubblicare su Shopify con "push_to_shopify"`,
           },
         ],
       };
@@ -141,7 +141,7 @@ server.tool(
       content: [
         {
           type: "text",
-          text: `**Landing Page: ${state.templateName}**\nProdotto: ${state.productData?.title || "N/A"}\n\n**Sezioni:**\n${sections.join("\n")}\n\n**Copy attuale:**\n- Headline: ${state.copyData?.hero_headline || "N/A"}\n- Subheadline: ${state.copyData?.hero_subheadline || "N/A"}\n- CTA: ${state.copyData?.cta_text || "N/A"}\n- Urgenza: ${state.copyData?.urgency_text || "N/A"}`,
+          text: `**Landing Page: ${state.templateName}**\nProdotto: ${state.productData?.title || "N/A"}\n\n**Sezioni:**\n${sections.join("\n")}\n\n**Copy attuale:**\n- Subtitle: ${state.copyData?.product_subtitle || "N/A"}\n- CTA: ${state.copyData?.cta_heading || "N/A"}\n- Benefits: ${state.copyData?.benefit_texts?.length || 0}\n- Reviews: ${state.copyData?.reviews?.length || 0}`,
         },
       ],
     };
@@ -417,6 +417,71 @@ function updateComparisonInTemplate(state) {}
 function updateFaqInTemplate(state) {}
 function updateReviewsInTemplate(state) {}
 
-// ─── Start server ───
-const transport = new StdioServerTransport();
-await server.connect(transport);
+// ─── Start HTTP/SSE server ───
+const PORT = process.env.PORT || 3000;
+const transports = {};
+
+const httpServer = createServer(async (req, res) => {
+  // CORS headers
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
+
+  const url = new URL(req.url, `http://localhost:${PORT}`);
+
+  // Health check
+  if (url.pathname === "/" || url.pathname === "/health") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ status: "ok", name: "landing-page-generator", version: "2.0.0" }));
+    return;
+  }
+
+  // SSE endpoint — client connects here with GET
+  if (url.pathname === "/sse" && req.method === "GET") {
+    const transport = new SSEServerTransport("/messages", res);
+    transports[transport.sessionId] = transport;
+    transport.onclose = () => {
+      delete transports[transport.sessionId];
+    };
+    await server.connect(transport);
+    await transport.start();
+    return;
+  }
+
+  // Messages endpoint — client sends JSON-RPC messages here with POST
+  if (url.pathname === "/messages" && req.method === "POST") {
+    const sessionId = url.searchParams.get("sessionId");
+    const transport = transports[sessionId];
+    if (!transport) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Invalid or missing sessionId" }));
+      return;
+    }
+    let body = "";
+    req.on("data", (chunk) => { body += chunk; });
+    req.on("end", async () => {
+      try {
+        await transport.handlePostMessage(req, res, JSON.parse(body));
+      } catch (err) {
+        res.writeHead(400, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: err.message }));
+      }
+    });
+    return;
+  }
+
+  res.writeHead(404);
+  res.end("Not found");
+});
+
+httpServer.listen(PORT, "0.0.0.0", () => {
+  console.log(`MCP SSE server running on http://0.0.0.0:${PORT}`);
+  console.log(`SSE endpoint: /sse`);
+  console.log(`Messages endpoint: /messages`);
+});

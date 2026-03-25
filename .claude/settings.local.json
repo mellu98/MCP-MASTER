@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__landing-page__analyze_product",
+      "mcp__landing-page__push_to_shopify",
+      "mcp__landing-page__reset_landing",
+      "mcp__landing-page__generate_landing",
+      "Bash(node -e \":*)",
+      "Bash(node --input-type=module -e \":*)",
+      "Bash(python -c \":*)"
+    ]
+  }
+}

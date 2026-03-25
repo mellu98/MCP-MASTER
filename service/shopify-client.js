@@ -55,7 +55,7 @@ export async function createProduct(storeUrl, accessToken, productData, copyData
           requires_shipping: true,
         },
       ],
-      images: (productData.images || []).slice(0, 10).map((src) => ({ src })),
+      images: (productData.images || []).map(src => ({ src })),
     },
   };
 

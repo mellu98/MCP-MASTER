@@ -1,3 +1,12 @@
 node_modules/
 .env
-.mcp.json
+
+# Generated/temporary files
+service/.landing-state.json
+service/current-template-*.json
+service/template-*.json
+service/generated-images/
+service/texts-*.json
+service/texts-*.txt
+service/get-token.js
+master-check.json

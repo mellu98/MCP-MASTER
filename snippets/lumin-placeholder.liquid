@@ -1,5 +1,0 @@
-{% if settings.use_placeholder_color %}
-  <img style="background: {{ settings.placeholder_color }};display: block;">
-{% else %}
-  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-{% endif %}
